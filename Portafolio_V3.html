@@ -862,6 +862,101 @@
                 height: 10%;
             }
         }
+
+
+
+ 
+        /* ===== PUNTO LATENTE EN CADA ZONA ===== */
+
+        /* El punto en sí */
+        .interactive-zone::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: rgba(92, 138, 90, 0.8);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+            animation: pointPulse 3.5s ease-in-out infinite;
+            box-shadow: 
+                0 0 15px rgba(92, 138, 90, 0.4),
+                0 0 30px rgba(92, 138, 90, 0.2);
+        }
+
+        /* Retrasos escalonados para que no aparezcan todos a la vez */
+        .zone-principal::before { 
+            animation-delay: 1.5s;
+        }
+        .zone-hobbies::before { 
+            animation-delay: 2s;
+        }
+        .zone-proyectos::before { 
+            animation-delay: 2.5s;
+        }
+        .zone-formacion-academica::before { 
+            animation-delay: 3s;
+        }
+
+        /* Animación del punto */
+        @keyframes pointPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.7;
+            }
+            80% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     </style>
 </head>
 <body>
