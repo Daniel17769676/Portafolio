@@ -289,10 +289,10 @@
         }
 
         .zone-proyectos {
-            left: 61%;
-            top: 51%;
-            width: 7%;
-            height: 7%;
+            left: 29%;/* Distancia desde el borde izquierdo de la pantalla */
+            top: 44%; /* Distancia desde Borde superior de la pantalla */
+            width: 10%; /* Ancho de la zona clickeable */
+            height: 10%; /* Alto de la zona clickeable */
         }
 
         /* ===== HINT ===== */
@@ -861,7 +861,247 @@
                 width: 28%;
                 height: 10%;
             }
+        } 
+
+
+    /* ===== ZONA: CONTACTO (Celular) ===== */
+        .zone-contacto {           
+            left: 5%;/* Distancia desde el borde izquierdo de la pantalla */
+            top: 47%;/* Distancia desde Borde superior de la pantalla */
+            width: 4%; /*Ancho de la zona clickeable*/
+            height: 8%;/*Alto de la zona clickeable*/
         }
+
+        /* Retraso del punto latiente */
+        .zone-contacto::before {
+            animation-delay: 3.5s;
+        }
+
+
+
+                /* ===== FORMULARIO DE CONTACTO ===== */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5c8a5a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #2d3a28;
+            background: #ffffff;
+            border: 1px solid rgba(92, 138, 90, 0.15);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(90, 107, 86, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #5c8a5a;
+            box-shadow: 0 0 0 3px rgba(92, 138, 90, 0.1);
+            background: #fafdf9;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Botón de enviar */
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 0.5rem;
+            background: #5c8a5a;
+            color: #f7faf5;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            background: #2d4a2c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(92, 138, 90, 0.25);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Separador */
+        .contact-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0 1.5rem 0;
+            color: #8fb589;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-divider::before,
+        .contact-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(92, 138, 90, 0.15);
+        }
+
+        /* Redes sociales */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 1.6rem;
+            background: #ffffff;
+            border: 1px solid rgba(92, 138, 90, 0.15);
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2d4a2c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            background: #f7faf5;
+            border-color: #5c8a5a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(92, 138, 90, 0.15);
+        }
+
+        .social-link .icon {
+            font-size: 1.1rem;
+        }
+
+        /* Email destacado */
+        .contact-email {
+            text-align: center;
+            margin: 1.5rem 0 0.5rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #5a6b56;
+        }
+
+        .contact-email strong {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d4a2c;
+            margin-top: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-email a {
+            color: #d98850;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(217, 136, 80, 0.4);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            color: #b86a3a;
+            border-bottom-color: #b86a3a;
+        }
+
+        /* Mensaje de éxito (oculto por defecto) */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(92, 138, 90, 0.08);
+            border: 1px solid rgba(92, 138, 90, 0.2);
+            border-radius: 12px;
+            margin: 1rem 0;
+            font-family: 'Inter', sans-serif;
+            color: #2d4a2c;
+        }
+
+        .form-success.visible {
+            display: block;
+            animation: fadeInReading 0.5s ease;
+        }
+
+        .form-success .check {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .social-link {
+                min-width: 100%;
+            }
+            
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .zone-contacto {
+                left: 76%;      
+                top: 38%;       
+                width: 10%;     
+                height: 16%;    
+            }
+        }
+
 
 
 
@@ -900,6 +1140,8 @@
             animation-delay: 3s;
         }
 
+
+
         /* Animación del punto */
         @keyframes pointPulse {
             0% {
@@ -924,36 +1166,220 @@
             }
         }
 
+        /* ===== ZONA: DATA ANALYTICS (Libros) ===== */
+            .zone-data {
+                left: 70%;        /* Posición horizontal: desde el borde izquierdo */
+                top: 78%;        /* Posición vertical: desde el borde superior */
+                width: 22%;      /* Ancho de la zona clickeable */
+                height: 13%;     /* Alto de la zona clickeable */
+            }
+
+            /* Retraso del punto latiente */
+            .zone-data::before {
+                animation-delay: 4s;
+            }
+
+
+            /* ===== ÁREAS DE ESTUDIO (Data Analytics) ===== */
+            .study-areas {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 0.8rem;
+                margin: 1.5rem 0;
+            }
+
+            .study-area {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 1rem 1.2rem;
+                background: #ffffff;
+                border: 1px solid rgba(92, 138, 90, 0.1);
+                border-left: 3px solid #5c8a5a;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                box-shadow: 0 1px 3px rgba(45, 74, 44, 0.03);
+            }
+
+            .study-area:hover {
+                border-color: rgba(92, 138, 90, 0.25);
+                border-left-color: #d98850;
+                transform: translateX(4px);
+                box-shadow: 0 6px 20px rgba(92, 138, 90, 0.1);
+            }
+
+            .study-area .area-icon {
+                font-size: 1.4rem;
+                line-height: 1;
+                flex-shrink: 0;
+            }
+
+            .study-area .area-text {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 500;
+                color: #2d4a2c;
+                line-height: 1.3;
+            }
+
+            /* ===== LISTA DE RAMOS ===== */
+            .course-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .course-item {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 0.9rem 1.2rem;
+                background: rgba(92, 138, 90, 0.04);
+                border-radius: 10px;
+                border-left: 2px solid #8fb589;
+                transition: all 0.3s ease;
+            }
+
+            .course-item:hover {
+                background: rgba(92, 138, 90, 0.08);
+                border-left-color: #d98850;
+                transform: translateX(4px);
+            }
+
+            .course-semester {
+                font-family: 'Fraunces', serif;
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: #8fb589;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                min-width: 85px;
+                flex-shrink: 0;
+            }
+
+            .course-name {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.9rem;
+                color: #2d4a2c;
+                font-weight: 500;
+            }
+
+            /* ===== PROYECTOS DATA ===== */
+            .data-projects {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .data-project {
+                background: #ffffff;
+                border: 1px solid rgba(92, 138, 90, 0.1);
+                border-radius: 14px;
+                padding: 1.2rem 1rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 1px 3px rgba(45, 74, 44, 0.03);
+                cursor: pointer;
+                text-decoration: none;
+                color: inherit;
+                display: block;
+            }
+
+            .data-project:hover {
+                border-color: rgba(92, 138, 90, 0.25);
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(92, 138, 90, 0.12);
+            }
+
+            .data-project .project-icon {
+                font-size: 1.6rem;
+                margin-bottom: 0.4rem;
+                display: block;
+            }
+
+            .data-project h4 {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: #2d4a2c;
+                margin-bottom: 0.2rem;
+            }
+
+            .data-project p {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.75rem;
+                color: #8fb589;
+                margin-bottom: 0;
+                font-weight: 400;
+                line-height: 1.4;
+            }
+
+            /* Responsive */
+            @media (max-width: 700px) {
+                .study-areas {
+                    grid-template-columns: 1fr;
+                }
+                
+                .data-projects {
+                    grid-template-columns: 1fr;
+                }
+                
+                .course-item {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 4px;
+                }
+                
+                .course-semester {
+                    min-width: auto;
+                }
+                
+                .zone-data {
+                    left: 6%;
+                    top: 60%;
+                    width: 26%;
+                    height: 20%;
+                }
+            }
 
 
 
 
 
+        /* ===== MODO DEPURACIÓN: ZONAS RESALTADAS ===== 
+        body.debug .interactive-zone {
+            border: 3px solid red !important;
+            background: rgba(255, 0, 0, 0.15) !important;
+            z-index: 999 !important;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4) !important;
+        }
 
+        body.debug .interactive-zone::before {
+            display: none !important;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        body.debug .interactive-zone::after {
+            content: attr(data-overlay) !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            background: red !important;
+            color: white !important;
+            padding: 3px 8px !important;
+            border-radius: 4px !important;
+            font-size: 10px !important;
+            font-family: monospace !important;
+            font-weight: bold !important;
+            white-space: nowrap !important;
+            z-index: 10000 !important;
+            pointer-events: none !important;
+            inset: auto !important;
+            width: auto !important;
+            height: auto !important;
+        } */
 
 
         
@@ -963,7 +1389,7 @@
 
     <div class="room-container">
         <!-- ===== IMAGEN ===== -->
-        <img src="room.png" alt="Portafolio de Daniel Cabrera" class="room-image" />
+        <img src="room2.png" alt="Portafolio de Daniel Cabrera" class="room-image" />
 
         <!-- ===== ANIMACIONES ===== -->
         <div class="animations-layer">
@@ -986,11 +1412,20 @@
         </div>
 
         <div class="interactive-zone zone-proyectos" data-overlay="overlay-proyectos">
-            <span class="zone-label">Proyectos</span>
+            <span class="zone-label">Proyectos Web</span>
         </div>
 
         <div class="interactive-zone zone-formacion-academica" data-overlay="overlay-formacion">
             <span class="zone-label">Formación</span>
+        </div>
+
+        <div class="interactive-zone zone-data" data-overlay="overlay-data">
+            <span class="zone-label">Data Analytics</span>
+        </div>
+
+
+        <div class="interactive-zone zone-contacto" data-overlay="overlay-contacto">
+            <span class="zone-label">Contacto</span>
         </div>
 
         <div class="hint">✦ Explora · cada elemento guarda una historia ✦</div>
@@ -1068,14 +1503,11 @@
                     </div>
                     <div class="reading-card">
                         <div class="number">03</div>
-                        <h4>Anime</h4>
-                        <p>Historias · Cultura · Inspiración</p>
+                        <h4>Series & peliculas</h4>
+                        <p>Cultura japonesa</p>
                     </div>
-                    <div class="reading-card">
-                        <div class="number">04</div>
-                        <h4>Música</h4>
-                        <p>Guitarra · Composición</p>
-                    </div>
+
+
                 </div>
                 <p>
                     Cada hobby es una <span class="highlight">herramienta de recarga</span>.
@@ -1250,6 +1682,215 @@
             </div>
         </div>
 
+        <!-- ===== OVERLAY: DATA ANALYTICS ===== -->
+            <div id="overlay-data" class="overlay">
+                <div class="overlay-content">
+                    <h1>📊 Data Analytics</h1>
+                    <p class="subtitle">Ciencia de Datos · Machine Learning</p>
+
+                    <div class="reading-content">
+
+                        <p>
+                            <span class="highlight">Del dato al conocimiento.</span>
+                            Mi formación en la mención de Ciencia de Datos me ha permitido
+                            recorrer el ciclo completo: desde la ingesta y limpieza hasta
+                            el modelado y la visualización.
+                        </p>
+
+                        <!-- ===== ÁREAS DE ESTUDIO ===== -->
+                        <h2 class="section-title">Áreas de estudio</h2>
+
+                        <div class="study-areas">
+                            <div class="study-area">
+                                <span class="area-icon">📥</span>
+                                <span class="area-text">Preprocesamiento de Datos</span>
+                            </div>
+                            <div class="study-area">
+                                <span class="area-icon">📊</span>
+                                <span class="area-text">Visualización de Datos</span>
+                            </div>
+                            <div class="study-area">
+                                <span class="area-icon">🤖</span>
+                                <span class="area-text">Machine Learning</span>
+                            </div>
+                            <div class="study-area">
+                                <span class="area-icon">🧠</span>
+                                <span class="area-text">Deep Learning</span>
+                            </div>
+                            <div class="study-area">
+                                <span class="area-icon">🗄️</span>
+                                <span class="area-text">Big Data</span>
+                            </div>
+                            <div class="study-area">
+                                <span class="area-icon">📈</span>
+                                <span class="area-text">Estadística e Inferencia</span>
+                            </div>
+                        </div>
+
+                        <!-- ===== CURSOS CLAVE ===== -->
+                        <h2 class="section-title">Cursos clave de la malla</h2>
+
+                        <div class="course-list">
+                            <div class="course-item">
+                                <span class="course-semester">5° semestre</span>
+                                <span class="course-name">Preprocesamiento de Datos</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-semester">6° semestre</span>
+                                <span class="course-name">Visualización de Datos</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-semester">6° semestre</span>
+                                <span class="course-name">Machine Learning</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-semester">7° semestre</span>
+                                <span class="course-name">Big Data</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-semester">7° semestre</span>
+                                <span class="course-name">Deep Learning</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-semester">8° semestre</span>
+                                <span class="course-name">Taller Aplicado de Ciencia de Datos</span>
+                            </div>
+                        </div>
+
+                        <!-- ===== PROYECTOS DE DATA ===== -->
+                        <h2 class="section-title">Proyectos de Data</h2>
+
+                        <div class="data-projects">
+                            <a href="#" class="data-project" target="_blank">
+                                <span class="project-icon">📊</span>
+                                <h4>Análisis Exploratorio</h4>
+                                <p>Dataset real · Python · Pandas</p>
+                            </a>
+                            <a href="#" class="data-project" target="_blank">
+                                <span class="project-icon">🤖</span>
+                                <h4>Modelo Predictivo</h4>
+                                <p>Clasificación · Scikit-learn</p>
+                            </a>
+                            <a href="#" class="data-project" target="_blank">
+                                <span class="project-icon">📈</span>
+                                <h4>Dashboard Interactivo</h4>
+                                <p>Power BI · KPIs · Reportes</p>
+                            </a>
+                        </div>
+
+                        <!-- ===== STACK ===== -->
+                        <h2 class="section-title">Stack &amp; Herramientas</h2>
+
+                        <p>
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Jupyter</span>
+                            <span class="tag">Git</span>
+                        </p>
+
+                        <p class="closing-quote">
+                            <span class="highlight">"De cero a Data Analyst"</span>
+                        </p>
+
+                    </div>
+
+                    <button class="back-btn" data-back>Volver al inicio</button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ===== OVERLAY: CONTACTO ===== -->
+        <div id="overlay-contacto" class="overlay">
+            <div class="overlay-content">
+                <h1>📱 Contacto</h1>
+                <p class="subtitle">Hablemos · Estoy disponible</p>
+
+                <div class="reading-content">
+
+                    <p>
+                        <span class="highlight">¿Tienes un proyecto en mente?</span>
+                        Escríbeme y conversemos. Respondo en menos de 24 horas.
+                    </p>
+
+                    <!-- Formulario -->
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST">
+                        
+                        <!-- Configuración de FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" style="display:none">
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto o propuesta..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            ✉️ Enviar mensaje
+                        </button>
+
+                    </form>
+
+                    <!-- Mensaje de éxito -->
+                    <div class="form-success" id="formSuccess">
+                        <span class="check">✅</span>
+                        <strong>¡Mensaje enviado!</strong>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Te responderé lo antes posible.</p>
+                    </div>
+
+                    <!-- Separador -->
+                    <div class="contact-divider">Visita mis redes</div>
+
+                    <!-- Redes sociales -->
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener" class="social-link">
+                            <span class="icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="social-link">
+                            <span class="icon">🐙</span>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+
+                    <!-- Mensaje final -->
+                    <div class="contact-email">
+                        No olvides escribirme
+                        <strong>📧 contacto@daniel-cabrera.cl</strong>
+                        <a href="mailto:contacto@daniel-cabrera.cl">contacto@daniel-cabrera.cl</a>
+                    </div>
+
+                </div>
+
+                <button class="back-btn" data-back>Volver al inicio</button>
+            </div>
+        </div>
+
 
     <!-- ===== BOTÓN FLOTANTE DE CIERRE ===== -->
     <button class="close-btn" id="close-btn">↩ Volver</button>
@@ -1317,6 +1958,38 @@
 
         console.log('🌿 Portafolio de Daniel Cabrera');
         console.log('📖 Secciones: Sobre mí · Hobbies · Proyectos · Formación');
+
+
+        /* ===== MODO DEPURACIÓN CON PERSISTENCIA =====
+        // Se mantiene incluso al recargar (usa localStorage)
+
+        // Comprobar si el modo debug estaba activado
+        if (localStorage.getItem('debugMode') === 'on') {
+            document.body.classList.add('debug');
+            console.log('🔴 Modo depuración ACTIVO (recordado)');
+        }
+
+        // Funciones globales para activar/desactivar
+        window.debugOn = function() {
+            document.body.classList.add('debug');
+            localStorage.setItem('debugMode', 'on');
+            console.log('🔴 Modo depuración ACTIVADO (persistente)');
+            console.log('   Ejecuta debugOff() para desactivarlo');
+        };
+
+        window.debugOff = function() {
+            document.body.classList.remove('debug');
+            localStorage.removeItem('debugMode');
+            console.log('⚪ Modo depuración DESACTIVADO');
+        };
+
+        // Información útil
+        console.log('💡 Tip: ejecuta debugOn() para resaltar las zonas, debugOff() para quitarlo');*/
+
+
+
+
+
     </script>
 
 </body>
