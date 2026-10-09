@@ -1346,6 +1346,28 @@
 
 
 
+            /* ===== Estilos diseño WEB (ROSEGURIDAD) ===== */
+            .project-link {
+                display: inline-block;
+                margin-top: 0.7rem;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.75rem;
+                font-weight: 500;
+                color: #d98850;
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                padding-bottom: 2px;
+                border-bottom: 1px dashed rgba(217, 136, 80, 0.4);
+                transition: all 0.3s ease;
+            }
+
+            .project-link:hover {
+                color: #b86a3a;
+                border-bottom-color: #b86a3a;
+                border-bottom-style: solid;
+                transform: translateX(3px);
+            }
+
 
 
         /* ===== MODO DEPURACIÓN: ZONAS RESALTADAS ===== 
@@ -1435,7 +1457,7 @@
     <div id="overlay-principal" class="overlay">
         <div class="overlay-content">
             <h1>🌿 Daniel Cabrera</h1>
-            <p class="subtitle">Desarrollador · Data Analyst · Ciencia de Datos</p>
+            <p class="subtitle">Ciencia de Datos · Data Analyst · Desarrollador </p>
             <div class="reading-content">
                 <p>
                     <span class="highlight">Bienvenido a mi portafolio.</span>
@@ -1443,31 +1465,29 @@
                     y un poco de quién soy fuera del código.
                 </p>
                 <p>
-                    Me especializo en <span class="highlight">desarrollo web</span> y
-                    <span class="highlight">análisis de datos</span>, combinando tecnología
-                    y creatividad para resolver problemas reales.
+                    Me especializo en <span class="highlight">análisis de datos</span> pero tambien me gusta el
+                    <span class="highlight">desarrollo web</span>, combinando tecnología y creatividad para resolver problemas reales.
                 </p>
                 <div class="reading-grid">
                     <div class="reading-card">
                         <div class="number">01</div>
-                        <h4>Desarrollo Web</h4>
-                        <p>Python · Django · JavaScript</p>
-                    </div>
-                    <div class="reading-card">
-                        <div class="number">02</div>
                         <h4>Data & BI</h4>
                         <p>SQL · Pandas · Visualización</p>
                     </div>
+
+                    <div class="reading-card">
+                        <div class="number">02</div>
+                        <h4>Desarrollo Web</h4>
+                        <p>Python · Django · JavaScript</p>
+                    </div>
+
                     <div class="reading-card">
                         <div class="number">03</div>
                         <h4>Formación</h4>
                         <p>Ing. Informática en curso</p>
                     </div>
                 </div>
-                <p>
-                    <span class="highlight">"De cero a Data Analyst"</span> — ese es mi camino.
-                    Cada proyecto es un paso más en esta dirección.
-                </p>
+
                 <p>
                     <span class="tag">Python</span>
                     <span class="tag">Django</span>
@@ -1528,19 +1548,36 @@
     <div id="overlay-proyectos" class="overlay">
         <div class="overlay-content">
             <h1>📖 Proyectos</h1>
-            <p class="subtitle">Desarrollo web · Ciencia de datos</p>
+            <p class="subtitle">Desarrollo web</p>
             <div class="reading-content">
                 <p>
                     Una selección de los <span class="highlight">proyectos</span> en los que he trabajado,
-                    tanto de desarrollo web como de análisis de datos.
+                    para desarrollo web.
                 </p>
                 <div class="reading-grid">
                     <div class="reading-card">
                         <div class="number">01</div>
-                        <h4>Ecoshop</h4>
-                        <p>E-commerce sostenible · Django</p>
+                        <h4>Roseguridad</h4>
+                        <p>Redes y seguridad · Django</p>
+                        <a href="https://roseguridad.cl" target="_blank" rel="noopener" class="project-link">Ver proyecto</a>
                     </div>
+
                     <div class="reading-card">
+                        <div class="number">02</div>
+                        <h4>Proyecto 02</h4>
+                        <p>Otros · Django</p>
+                        <a href="" target="_blank" rel="noopener" class="project-link">Ver proyecto</a>
+                    </div>
+
+                    <div class="reading-card">
+                        <div class="number">03</div>
+                        <h4>Proyecto 03</h4>
+                        <p>Otros · Django</p>
+                        <a href="" target="_blank" rel="noopener" class="project-link">Ver proyecto</a>
+                    </div>
+
+                    
+                    <!-- <div class="reading-card">
                         <div class="number">02</div>
                         <h4>Dashboard AI</h4>
                         <p>Visualización de datos · Python</p>
@@ -1554,7 +1591,7 @@
                         <div class="number">04</div>
                         <h4>Análisis SQL</h4>
                         <p>Reportes y KPIs de negocio</p>
-                    </div>
+                    </div> -->
                 </div>
                 <p>
                     <span class="highlight">Stack &amp; Tools</span>:
@@ -1802,18 +1839,7 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-                <!-- ===== OVERLAY: CONTACTO ===== -->
+               <!-- ===== OVERLAY: CONTACTO ===== -->
         <div id="overlay-contacto" class="overlay">
             <div class="overlay-content">
                 <h1>📱 Contacto</h1>
@@ -1827,12 +1853,15 @@
                     </p>
 
                     <!-- Formulario -->
-                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST">
+                    <!-- <form class="contact-form" id="contactForm" action="https://formsubmit.co/daniel.cabrera.araya@gmail.com" method="POST"> -->
+                    <form class="contact-form" id="contactForm">
                         
+
                         <!-- Configuración de FormSubmit -->
                         <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="http://localhost:8000/gracias.html">
                         <input type="text" name="_honey" style="display:none">
 
                         <div class="form-group">
@@ -1868,11 +1897,11 @@
 
                     <!-- Redes sociales -->
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener" class="social-link">
+                        <a href="https://linkedin.com/in/daniel-cabrera-araya" target="_blank" rel="noopener" class="social-link">
                             <span class="icon">💼</span>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="social-link">
+                        <a href="https://github.com/Daniel17769676" target="_blank" rel="noopener" class="social-link">
                             <span class="icon">🐙</span>
                             <span>GitHub</span>
                         </a>
@@ -1986,7 +2015,60 @@
         // Información útil
         console.log('💡 Tip: ejecuta debugOn() para resaltar las zonas, debugOff() para quitarlo');*/
 
+        // ===== FORMULARIO DE CONTACTO CON FORM SUBMIT (AJAX) =====
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
 
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Mostrar estado de envío
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '⏳ Enviando...';
+                submitBtn.disabled = true;
+
+                // Recopilar datos
+                const formData = new FormData(contactForm);
+                formData.append('_subject', 'Nuevo mensaje desde el portafolio');
+                formData.append('_captcha', 'false');
+                formData.append('_template', 'table');
+
+                try {
+                    const response = await fetch('https://formsubmit.co/ajax/daniel.cabrera.araya@gmail.com', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Éxito
+                        contactForm.style.display = 'none';
+                        formSuccess.classList.add('visible');
+
+                        setTimeout(() => {
+                            contactForm.reset();
+                            contactForm.style.display = 'flex';
+                            formSuccess.classList.remove('visible');
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }, 5000);
+                    } else {
+                        throw new Error('Error al enviar');
+                    }
+                } catch (error) {
+                    // Error
+                    submitBtn.innerHTML = '❌ Error. Intenta de nuevo';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
+            });
+        }
 
 
 

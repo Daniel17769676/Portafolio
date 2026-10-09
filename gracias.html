@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gracias · Daniel Cabrera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef4ec;
+            color: #2d3a28;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-image: radial-gradient(ellipse at 50% 20%,
+                    rgba(143, 181, 137, 0.15),
+                    rgba(92, 138, 90, 0.05) 40%,
+                    transparent 70%);
+        }
+
+        .card {
+            max-width: 520px;
+            width: 100%;
+            background: #f7faf5;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow:
+                0 1px 2px rgba(45, 74, 44, 0.04),
+                0 10px 40px rgba(45, 74, 44, 0.08);
+            border: 1px solid rgba(92, 138, 90, 0.1);
+            border-left: 3px solid #5c8a5a;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: #2d4a2c;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: #8fb589;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(143, 181, 137, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #5a6b56;
+            margin-bottom: 1.2rem;
+        }
+
+        .highlight {
+            color: #d98850;
+            font-weight: 500;
+            font-style: italic;
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2rem;
+            background: transparent;
+            border: 1px solid rgba(92, 138, 90, 0.25);
+            color: #5c8a5a;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            background: rgba(92, 138, 90, 0.08);
+            border-color: rgba(92, 138, 90, 0.5);
+            color: #2d4a2c;
+            transform: translateX(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <span class="icon">✅</span>
+        <h1>¡Mensaje enviado!</h1>
+        <p class="subtitle">Gracias por escribirme</p>
+
+        <p>
+            Tu mensaje llegó correctamente.
+            <span class="highlight">Te responderé lo antes posible.</span>
+        </p>
+
+        <p>
+            Mientras tanto, puedes explorar más sobre mi trabajo en el portafolio.
+        </p>
+
+        <a href="index.html" class="back-link">← Volver al portafolio</a>
+    </div>
+</body>
+</html>
