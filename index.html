@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#e3ebe0" />
     <title>Daniel Cabrera · Portafolio</title>
     <meta name="description" content="Portafolio de Daniel Cabrera — Desarrollo web, análisis de datos y proyectos de ciencia de datos." />
     <meta name="author" content="Daniel Cabrera" />
@@ -28,26 +29,70 @@
             box-sizing: border-box;
         }
 
+        /* ===== LIENZO RESPONSIVE =====
+           Todo (zonas, puntos, efectos) usa % de la foto, así que siempre quedan
+           pegados a cada objeto sin importar el tamaño.
+           · Pantallas normales y anchas (proporción ≥ 3:2, incluye 4K, 1080p,
+             portátiles y celular en horizontal): la foto completa llena TODA la
+             pantalla, sin recortes y sin franjas.
+           · Pantallas casi cuadradas o verticales (tablet, celular en vertical):
+             la foto mantiene su proporción, ocupa todo el alto y se desliza con el
+             dedo hacia los lados.
+           · Monitores ultra anchos (más de 2.6:1): se limita el estiramiento y
+             quedan franjas laterales discretas. */
+        :root { --ratio: 1.7768; }          /* 1672 / 941 */
+
+        html, body { height: 100%; }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: #eef4ec;
-            height: 100vh;
-            width: 100vw;
+            background: #e3ebe0;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             user-select: none;
+            -webkit-text-size-adjust: 100%;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: radial-gradient(ellipse 70% 90% at 50% 45%, #f3f8f1 0%, #e3ebe0 55%, #cfdcca 100%);
         }
 
-        /* ===== CONTENEDOR ===== */
+        .room-scroller {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            overflow: hidden;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+        .room-scroller::-webkit-scrollbar { display: none; }
+
+        /* ===== CONTENEDOR (escenario) ===== */
         .room-container {
             position: relative;
-            width: 100vw;
+            flex: none;
+            margin: auto;
+            width: min(100vw, calc(100vh * 2.6));
             height: 100vh;
             overflow: hidden;
             background: #e3ebe0;
             cursor: default;
+        }
+        @supports (height: 100dvh) {
+            .room-container { width: min(100vw, calc(100dvh * 2.6)); height: 100dvh; }
+        }
+
+        /* Casi cuadrada o vertical: alto completo + desplazamiento horizontal */
+        @media (max-aspect-ratio: 3/2) {
+            .room-scroller { overflow-x: auto; overflow-y: hidden; }
+            .room-container { width: calc(100vh * var(--ratio)); height: 100vh; }
+            @supports (height: 100dvh) {
+                .room-container { width: calc(100dvh * var(--ratio)); height: 100dvh; }
+            }
         }
 
         /* ===== IMAGEN CON ANIMACIÓN DE ENTRADA ===== */
@@ -267,38 +312,38 @@
         }
 
         /* ===== POSICIONES DE ZONAS ===== */
-        .zone-principal {
-            left: 41%;
-            top: 39%;
-            width: 16%;
-            height: 11%;
+        .zone-principal {            /* monitor */
+            left: 41.7%;
+            top: 43.7%;
+            width: 15%;
+            height: 19%;
         }
 
-        .zone-hobbies {
-            left: 15%;
-            top: 1%;
-            width: 12%;
-            height: 40%;
+        .zone-hobbies {              /* bicicleta */
+            left: 13%;
+            top: 0%;
+            width: 15%;
+            height: 48%;
         }
 
-        .zone-formacion-academica {
-            left: 62.0%;
-            top: 6%;
-            width: 10%;
-            height: 10%;
+        .zone-formacion-academica {  /* diploma */
+            left: 61.3%;
+            top: 6.6%;
+            width: 10.5%;
+            height: 12.8%;
         }
 
-        .zone-proyectos {
-            left: 29%;/* Distancia desde el borde izquierdo de la pantalla */
-            top: 44%; /* Distancia desde Borde superior de la pantalla */
-            width: 10%; /* Ancho de la zona clickeable */
-            height: 10%; /* Alto de la zona clickeable */
+        .zone-proyectos {            /* laptop */
+            left: 29.7%;
+            top: 50.8%;
+            width: 11.5%;
+            height: 14.9%;
         }
 
         /* ===== HINT ===== */
         .hint {
-            position: absolute;
-            bottom: 3.5%;
+            position: fixed;
+            bottom: calc(3.5vh + env(safe-area-inset-bottom, 0px));
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -324,6 +369,8 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
             animation: hintIn 1s ease 2.8s forwards, hintFloat 3.2s ease-in-out 3.8s infinite, hintGlow 3.2s ease-in-out 3.8s infinite;
         }
+
+        .hint-swipe { display: none; }
 
         /* brillo que cruza la píldora */
         .hint::after {
@@ -357,8 +404,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
+            height: 100dvh;
             background: rgba(238, 244, 236, 0.96);
             backdrop-filter: blur(20px);
             z-index: 100;
@@ -392,6 +440,9 @@
             max-width: 720px;
             width: 100%;
             max-height: 85vh;
+            max-height: calc(100dvh - 4rem);
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
             overflow-y: auto;
             padding: 2.5rem 2.8rem;
             background: #f7faf5;
@@ -821,34 +872,6 @@
                 bottom: 3%;
             }
 
-            .zone-principal {
-                left: 12%;
-                top: 2%;
-                width: 50%;
-                height: 12%;
-            }
-
-            .zone-hobbies {
-                left: 4%;
-                top: 20%;
-                width: 30%;
-                height: 18%;
-            }
-
-            .zone-proyectos {
-                left: 58%;
-                top: 50%;
-                width: 10%;
-                height: 4%;
-            }
-
-            .zone-formacion-academica {
-                left: 32%;
-                bottom: 16%;
-                width: 22%;
-                height: 12%;
-            }
-
             .close-btn {
                 bottom: 1rem;
                 right: 1rem;
@@ -872,42 +895,15 @@
                 gap: 0.6rem;
             }
 
-            .zone-principal {
-                left: 8%;
-                top: 1%;
-                width: 60%;
-                height: 10%;
-            }
-
-            .zone-hobbies {
-                left: 2%;
-                top: 18%;
-                width: 35%;
-                height: 16%;
-            }
-
-            .zone-proyectos {
-                left: 55%;
-                top: 48%;
-                width: 12%;
-                height: 5%;
-            }
-
-            .zone-formacion-academica {
-                left: 34%;
-                bottom: 14%;
-                width: 28%;
-                height: 10%;
-            }
         } 
 
 
     /* ===== ZONA: CONTACTO (Celular) ===== */
-        .zone-contacto {           
-            left: 5%;/* Distancia desde el borde izquierdo de la pantalla */
-            top: 47%;/* Distancia desde Borde superior de la pantalla */
-            width: 4%; /*Ancho de la zona clickeable*/
-            height: 8%;/*Alto de la zona clickeable*/
+        .zone-contacto {            /* celular en el mueble */
+            left: 7.6%;
+            top: 53.5%;
+            width: 4.6%;
+            height: 10.8%;
         }
 
         /* Retraso del punto latiente */
@@ -916,11 +912,11 @@
         }
 
     /* ===== ZONA: EXPERIENCIA LABORAL (Gafete) ===== */
-        .zone-experiencia {
-            left: 77.6%;
-            top: 34.2%;
-            width: 3.7%;
-            height: 7%;
+        .zone-experiencia {         /* gafete */
+            left: 76.5%;
+            top: 36.5%;
+            width: 3.5%;
+            height: 10.8%;
         }
         .zone-experiencia::before {
             animation-delay: 4.5s;
@@ -1189,13 +1185,6 @@
                 width: 100%;
                 justify-content: center;
             }
-            
-            .zone-contacto {
-                left: 76%;      
-                top: 38%;       
-                width: 10%;     
-                height: 16%;    
-            }
         }
 
 
@@ -1262,11 +1251,11 @@
         }
 
         /* ===== ZONA: DATA ANALYTICS (Libros) ===== */
-            .zone-data {
-                left: 70%;        /* Posición horizontal: desde el borde izquierdo */
-                top: 78%;        /* Posición vertical: desde el borde superior */
-                width: 22%;      /* Ancho de la zona clickeable */
-                height: 13%;     /* Alto de la zona clickeable */
+            .zone-data {                 /* cuaderno + libro en la cama */
+                left: 67.3%;
+                top: 86%;
+                width: 20.9%;
+                height: 12.5%;
             }
 
             /* Retraso del punto latiente */
@@ -1429,13 +1418,6 @@
                 
                 .course-semester {
                     min-width: auto;
-                }
-                
-                .zone-data {
-                    left: 6%;
-                    top: 60%;
-                    width: 26%;
-                    height: 20%;
                 }
             }
 
@@ -1713,9 +1695,9 @@
                     transparent 70%);
                 animation: lampBreath 5s ease-in-out infinite;
             }
-            .fx-lamp-l    { left: 3%;    top: 38%;   width: 9%; height: 16%; }
-            .fx-lamp-r    { left: 78.9%; top: 49.1%; width: 9%; height: 14%; animation-delay: -2s; }
-            .fx-lamp-desk { left: 27.7%; top: 34.5%; width: 8%; height: 10%; animation-duration: 7s; animation-delay: -3s; }
+            .fx-lamp-l    { left: 6.2%;  top: 45%;   width: 9%; height: 16%; }
+            .fx-lamp-r    { left: 77.8%; top: 54%;   width: 9%; height: 15%; animation-delay: -2s; }
+            .fx-lamp-desk { left: 30%;   top: 41%;   width: 6%; height: 9%; animation-duration: 7s; animation-delay: -3s; }
 
             @keyframes lampBreath {
                 0%, 100% { opacity: .55; transform: scale(.97); }
@@ -1724,9 +1706,9 @@
 
             /* ---------- Sol en la ventana ---------- */
             .fx-sun {
-                left: 31.5%; top: 8%; width: 21.5%; height: 30%;
+                left: 34.2%; top: 8%; width: 19%; height: 30%;
                 mix-blend-mode: screen;
-                background: radial-gradient(ellipse at 55% 85%, rgba(255, 160, 80, .40), transparent 65%);
+                background: radial-gradient(ellipse at 55% 85%, rgba(255, 236, 190, .32), transparent 65%);
                 animation: sunPulse 9s ease-in-out infinite;
             }
             @keyframes sunPulse {
@@ -1736,13 +1718,13 @@
 
             /* ---------- Cielo: nubes y pájaros (recortado a la ventana) ---------- */
             .fx-sky {
-                left: 32%; top: 7.6%; width: 21%; height: 19%;
+                left: 34.4%; top: 8.4%; width: 18.5%; height: 23%;
                 overflow: hidden;
             }
             .cloud {
                 position: absolute;
                 border-radius: 50%;
-                background: rgba(255, 226, 205, .55);
+                background: rgba(255, 255, 255, .5);
                 filter: blur(7px);
                 animation: drift linear infinite;
             }
@@ -1756,12 +1738,12 @@
 
             .bird {
                 position: absolute;
-                width: 1.4vw;
+                width: 6.7%;
                 left: -10%; top: 40%;
                 opacity: 0;
                 animation: fly 24s linear infinite;
             }
-            .bird.b2 { animation-delay: 1.2s; width: 1.1vw; }
+            .bird.b2 { animation-delay: 1.2s; width: 5.2%; }
             .bird svg {
                 display: block; width: 100%; height: auto;
                 transform-origin: center;
@@ -1780,7 +1762,7 @@
             }
 
             /* ---------- Polvo flotando en la luz de la ventana ---------- */
-            .fx-motes { left: 30%; top: 9%; width: 24%; height: 40%; }
+            .fx-motes { left: 34.4%; top: 8.5%; width: 18.5%; height: 34%; }
             .mote {
                 position: absolute;
                 width: 2px; height: 2px;
@@ -1805,7 +1787,7 @@
                 animation: screenFlicker 5s ease-in-out infinite;
             }
             /* .fx-screen.main { left: 41.5%; top: 38.9%; width: 15.2%; height: 11.2%; } */
-            .fx-screen.lap  { left: 29.2%; top: 45%;   width: 9.3%;  height: 7.1%; animation-delay: -2s; }
+            .fx-screen.lap  { left: 30.2%; top: 51.2%; width: 9%;    height: 10.5%; animation-delay: -2s; }
 
             /* "código" que sube: dos capas de rayas con periodos distintos */
             .fx-screen::before,
@@ -1839,7 +1821,7 @@
 
             /* resplandor azul del monitor sobre el escritorio */
             .fx-glow-monitor {
-                left: 38%; top: 36%; width: 22%; height: 22%;
+                left: 39.4%; top: 38.8%; width: 19.7%; height: 24.4%;
                 mix-blend-mode: screen;
                 background: radial-gradient(ellipse, rgba(110, 180, 255, .18), transparent 70%);
                 animation: lampBreath 6s ease-in-out infinite;
@@ -1847,7 +1829,7 @@
 
             /* ---------- Celular: vibra / se enciende como notificación ---------- */
             .fx-phone {
-                left: 5.6%; top: 47.2%; width: 2.8%; height: 6.4%;
+                left: 8%; top: 54.4%; width: 3.6%; height: 9.4%;
                 mix-blend-mode: screen;
                 border-radius: 6px;
                 background: radial-gradient(ellipse, rgba(190, 225, 255, .75), rgba(160, 205, 255, .25) 55%, transparent 75%);
@@ -1862,7 +1844,7 @@
             }
 
             /* ---------- Diploma: brillo que cruza el marco ---------- */
-            .fx-diploma { left: 61.8%; top: 5.9%; width: 10.8%; height: 10.2%; overflow: hidden; }
+            .fx-diploma { left: 61.3%; top: 6.6%; width: 10.5%; height: 12.8%; overflow: hidden; }
             .fx-diploma::after {
                 content: '';
                 position: absolute; inset: 0;
@@ -1877,7 +1859,7 @@
             }
 
             /* ---------- Vapor del café ---------- */
-            .fx-steam { left: 40.3%; top: 48.2%; width: 3%; height: 5.3%; }
+            .fx-steam { left: 41.5%; top: 57%; width: 2.6%; height: 4.3%; }
             .fx-steam i {
                 position: absolute;
                 bottom: 0;
@@ -1900,7 +1882,7 @@
             /* ---------- Cursor parpadeante en el cartel "Stack & Tools" ---------- */
             /* Si no cae justo tras "Git", ajusta left/top en décimas de % */
             .fx-cursor {
-                left: 90%; top: 22.5%; width: .55%; height: 1.6%;
+                left: 88.9%; top: 28.4%; width: .5%; height: 2.3%;
                 background: #8fe39a;
                 box-shadow: 0 0 8px #8fe39a;
                 transform: rotate(-6deg);
@@ -1923,8 +1905,8 @@
 
             /* medalla: péndulo desde el clavo */
             .clone-medal {
-                clip-path: inset(3.6% 20% 77.6% 75.6%);
-                transform-origin: 77.75% 4.3%;
+                clip-path: inset(4.4% 21.6% 74% 75.1%);
+                transform-origin: 76.7% 4.6%;
                 animation: pendulum 4.5s ease-in-out infinite alternate;
             }
             @keyframes pendulum {
@@ -1939,15 +1921,15 @@
 
             /* planta del mueble (el recorte esquiva la lámpara para que ella no se mueva) */
             .clone-plant-l {
-                clip-path: polygon(0 32.1%, 8.2% 32.1%, 8.2% 40.6%, 5.35% 40.6%, 5.35% 47.7%, 0 47.7%);
-                transform-origin: 4.3% 47%;
+                clip-path: polygon(1.8% 37.7%, 10.9% 37.7%, 10.9% 47.4%, 8.4% 47.4%, 8.4% 53.7%, 1.8% 53.7%);
+                transform-origin: 5.4% 53.4%;
                 animation: sway 3.6s ease-in-out infinite alternate;
             }
             /* planta del escritorio */
             .clone-plant-d {
-                /* polígono que deja fuera la esquina de la pizarra (x ≥ 60.1%, y ≤ 47.4%) */
-                clip-path: polygon(56.9% 45%, 60.1% 45%, 60.1% 47.4%, 62.2% 47.4%, 62.2% 51.7%, 56.9% 51.7%);
-                transform-origin: 59.1% 51.2%;
+                /* polígono que deja fuera la esquina de la pizarra */
+                clip-path: polygon(56.7% 52.3%, 59.9% 52.3%, 59.9% 54.5%, 61.6% 54.5%, 61.6% 59.1%, 56.7% 59.1%);
+                transform-origin: 58.9% 58.7%;
                 animation: swayFast 2.8s ease-in-out infinite alternate;
             }
             @keyframes sway {
@@ -1961,8 +1943,8 @@
 
             /* ---------- Gafete (experiencia laboral): se mece colgado del gancho ---------- */
             .clone-badge {
-                clip-path: polygon(78.4% 25%, 80.8% 25%, 80.8% 34.6%, 81.4% 34.6%, 81.4% 41.8%, 77.7% 41.8%, 77.7% 34.6%, 78.4% 34.6%);
-                transform-origin: 79.5% 24.6%;
+                clip-path: polygon(77.27% 28.27%, 79.3% 28.27%, 79.3% 39.53%, 79.67% 39.53%, 79.67% 47.4%, 76.73% 47.4%, 76.73% 39.53%, 77.27% 39.53%);
+                transform-origin: 78.2% 27.8%;
                 animation: swingBadge 3.8s ease-in-out infinite alternate;
             }
             @keyframes swingBadge {
@@ -1971,8 +1953,8 @@
             }
             /* llaves: tintineo corto */
             .clone-keys {
-                clip-path: inset(24.6% 21.6% 69.4% 76.5%);
-                transform-origin: 77.5% 24.5%;
+                clip-path: inset(28.3% 22.7% 63.9% 75.2%);
+                transform-origin: 76.4% 27.8%;
                 animation: swingKeys 2.4s ease-in-out infinite alternate;
             }
             @keyframes swingKeys {
@@ -1980,7 +1962,7 @@
                 to   { transform: rotate(1.8deg); }
             }
             /* brillo que cruza la tarjeta del gafete */
-            .fx-badge { left: 78.1%; top: 34.6%; width: 2.8%; height: 6.2%; overflow: hidden; border-radius: 3px; }
+            .fx-badge { left: 77%; top: 40.2%; width: 2.4%; height: 6.7%; overflow: hidden; border-radius: 3px; }
             .fx-badge::after {
                 content: '';
                 position: absolute; inset: 0;
@@ -1992,14 +1974,14 @@
 
             /* ---------- Cuaderno de Data: la hoja se levanta como si la moviera el viento ---------- */
             .clone-notebook {
-                clip-path: polygon(67.76% 80.93%, 74.04% 78.69%, 74.89% 79.06%, 77.75% 85.03%, 79.74% 87.52%, 79.74% 88.24%, 71.9% 89.75%, 67.76% 81.28%);
-                transform-origin: 79.8% 87.8%;
+                clip-path: polygon(67.64% 89.16%, 71.77% 86.61%, 74.04% 86.93%, 77.39% 93.52%, 77.93% 95.01%, 71.17% 97.56%, 70.57% 96.92%);
+                transform-origin: 77.9% 94.9%;
                 animation: pageLift 5s ease-in-out infinite;
             }
             /* sombra que aparece bajo la hoja cuando se levanta */
             .fx-pageshadow {
-                left: 67.5%; top: 80%; width: 12.3%; height: 10%;
-                clip-path: polygon(0 20%, 51% 0, 63% 4%, 100% 65%, 100% 84%, 41% 97%, 0 25%);
+                left: 67.6%; top: 86.6%; width: 10.3%; height: 11%;
+                clip-path: polygon(0 23.3%, 40% 0, 62% 2.9%, 94.8% 63%, 100% 76.7%, 34.3% 100%, 28.5% 94.2%);
                 background: radial-gradient(ellipse at 100% 55%, transparent 25%, rgba(0, 0, 0, .55) 100%);
                 opacity: 0;
                 animation: pageShadow 5s ease-in-out infinite;
@@ -2266,6 +2248,77 @@
 
 
         
+
+
+        /* =========================================================
+           RESPONSIVE · ajustes por tamaño y tipo de pantalla
+           ========================================================= */
+
+        /* Notch / barras del sistema */
+        .overlay { padding-top: max(2rem, env(safe-area-inset-top)); padding-bottom: max(2rem, env(safe-area-inset-bottom)); }
+
+        /* Pantallas táctiles: no existe "hover", así que mostramos un punto que late
+           en cada zona y agrandamos el área de toque */
+        @media (hover: none) {
+            .interactive-zone::before {
+                content: '';
+                position: absolute;
+                top: 50%; left: 50%;
+                width: 12px; height: 12px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, .92);
+                transform: translate(-50%, -50%) scale(0);
+                pointer-events: none;
+                animation: pointPulse 3.5s ease-in-out infinite;
+                box-shadow: 0 0 0 3px rgba(92, 138, 90, .85), 0 0 16px rgba(255, 255, 255, .7);
+            }
+        }
+        @media (pointer: coarse) {
+            .interactive-zone::after { inset: -12px; pointer-events: auto; }
+        }
+
+        /* Tablet y celular */
+        @media (max-width: 700px) {
+            .overlay { padding: .8rem; }
+            .overlay-content {
+                max-height: calc(100dvh - 1.6rem);
+                padding: 1.5rem 1.2rem 4.5rem;   /* espacio para el botón flotante Volver */
+                border-radius: 16px;
+            }
+            .overlay .subtitle { margin-bottom: 1.2rem; letter-spacing: 2px; }
+            .back-btn { margin-top: 1.5rem; }
+            .close-btn { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); right: 1rem; }
+            .exp-timeline { margin-left: .3rem; padding-left: 1rem; }
+            .exp-timeline .education-item::before { left: calc(-1rem - 7px); }
+            .exp-bullets { margin-left: .9rem; }
+            .zone-label { display: none; }               /* en táctil el rótulo no se ve: lo reemplaza el punto */
+            .rocket-message { white-space: normal; font-size: 1.05rem; max-width: 80vw; }
+        }
+
+        /* Celular en vertical: aviso para deslizar */
+        @media (max-aspect-ratio: 3/2) {
+            .hint-main { display: none; }
+            .hint-swipe { display: inline; }
+            .hint { font-size: .6rem; letter-spacing: 1.2px; padding: .55rem 1rem; max-width: 94vw; }
+        }
+
+        @media (max-width: 380px) {
+            .overlay h1 { font-size: 1.35rem; }
+            .reading-content p { font-size: .84rem; line-height: 1.75; }
+            .education-item { flex-direction: column; gap: .4rem; }
+        }
+
+        /* Pantallas muy bajas (celular horizontal) */
+        @media (max-height: 500px) {
+            .overlay { padding: .5rem; }
+            .overlay-content { max-height: calc(100dvh - 1rem); padding: 1.2rem 1.5rem; }
+            .hint { display: none; }
+        }
+
+        /* Pantallas muy grandes: el contenido de los overlays respira */
+        @media (min-width: 1600px) {
+            .overlay-content { max-width: 780px; }
+        }
     </style>
 </head>
 
@@ -2273,9 +2326,10 @@
 
 <body>
 
+    <div class="room-scroller" id="roomScroller">
     <div class="room-container">
         <!-- ===== IMAGEN ===== -->
-        <img src="roomv2.png" alt="Portafolio de Daniel Cabrera" class="room-image" />
+        <img src="room.png" alt="Portafolio de Daniel Cabrera" class="room-image" />
 
         <!-- ===== ANIMACIONES ===== -->
         <div class="animations-layer">
@@ -2324,8 +2378,10 @@
             <span class="zone-label">Experiencia laboral</span>
         </div>
 
-        <div class="hint">✦ Explora · cada elemento guarda una historia ✦</div>
-    </div>
+    </div><!-- /room-container -->
+    </div><!-- /room-scroller -->
+
+    <div class="hint"><span class="hint-main">✦ Explora · cada elemento guarda una historia ✦</span><span class="hint-swipe">✦ Desliza ↔ y toca los puntos ✦</span></div>
 
     <!-- ===== OVERLAY: SOBRE MÍ ===== -->
     <div id="overlay-principal" class="overlay">
@@ -3006,7 +3062,7 @@
             overlays.forEach(el => el.classList.remove('visible'));
             closeBtn.classList.remove('visible');
             if (hint) hint.style.display = 'block';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         }
 
         function openOverlay(id) {
@@ -3027,10 +3083,6 @@
                 e.stopPropagation();
                 openOverlay(this.dataset.overlay);
             });
-            zone.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                openOverlay(this.dataset.overlay);
-            }, { passive: false });
         });
 
         // Botones "Volver al inicio"
@@ -3052,6 +3104,16 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isOpen) closeAllOverlays();
         });
+
+        // En celular la habitación es más ancha que la pantalla: empezar centrada en el escritorio
+        (function centerRoom() {
+            const sc = document.getElementById('roomScroller');
+            if (!sc) return;
+            const center = () => { sc.scrollLeft = (sc.scrollWidth - sc.clientWidth) / 2; };
+            center();
+            window.addEventListener('load', center);
+            window.addEventListener('orientationchange', () => setTimeout(center, 250));
+        })();
 
         console.log('🌿 Portafolio de Daniel Cabrera');
         console.log('📖 Secciones: Sobre mí · Hobbies · Proyectos · Formación');
