@@ -2964,17 +2964,14 @@
                     </p>
 
                     <!-- Formulario -->
-                    <!-- <form class="contact-form" id="contactForm" action="https://formsubmit.co/daniel.cabrera.araya@gmail.com" method="POST"> -->
+                    
                     <form class="contact-form" id="contactForm">
+                        <!-- Configuración de Web3Forms -->
+                        <input type="hidden" name="access_key" value="53e20d33-49a0-4f7e-a53f-883c9fc20391">
+                        <input type="hidden" name="subject" value="Nuevo mensaje desde el portafolio">
+                        <input type="hidden" name="from_name" value="Portafolio Daniel Cabrera">
                         
-
-                        <!-- Configuración de FormSubmit -->
-                        <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="http://localhost:8000/gracias.html">
-                        <input type="text" name="_honey" style="display:none">
-
+                        <!-- Campos del formulario -->
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
@@ -2993,7 +2990,6 @@
                         <button type="submit" class="submit-btn">
                             💬 ¡Conversemos!
                         </button>
-
                     </form>
 
                     <!-- Mensaje de éxito -->
@@ -3170,13 +3166,18 @@
                     formData.append('_template', 'table');
 
                     try {
-                        // Enviar a FormSubmit
-                        const response = await fetch('https://formsubmit.co/ajax/daniel.cabrera.araya@gmail.com', {
+                        // Enviar a Web3Forms
+                        const formData = new FormData(contactForm);
+                        const object = Object.fromEntries(formData);
+                        const json = JSON.stringify(object);
+
+                        const response = await fetch('https://api.web3forms.com/submit', {
                             method: 'POST',
-                            body: formData,
                             headers: {
+                                'Content-Type': 'application/json',
                                 'Accept': 'application/json'
-                            }
+                            },
+                            body: json
                         });
 
                         if (response.ok) {
