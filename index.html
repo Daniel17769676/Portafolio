@@ -2332,12 +2332,140 @@
             }
 
 
+            /* ===== SECCIÓN SOBRE MÍ: DISEÑO DE TARJETAS ===== */
+                .about-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                    margin: 1.5rem 0;
+                }
 
+                .about-card {
+                    background: #ffffff;
+                    border: 1px solid rgba(92, 138, 90, 0.1);
+                    border-radius: 12px;
+                    padding: 1.2rem;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 1px 3px rgba(45, 74, 44, 0.03);
+                    cursor: pointer;
+                }
 
+                .about-card:hover {
+                    border-color: #5c8a5a;
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 20px rgba(92, 138, 90, 0.12);
+                }
 
+                .about-icon {
+                    font-size: 1.8rem;
+                    margin-bottom: 0.5rem;
+                }
 
+                .about-card h4 {
+                    font-family: 'Fraunces', serif;
+                    font-size: 1.05rem;
+                    color: #2d4a2c;
+                    margin-bottom: 0.3rem;
+                }
 
+                .about-card p {
+                    font-size: 0.8rem !important;
+                    color: #8fb589 !important;
+                    line-height: 1.4 !important;
+                    margin-bottom: 0 !important;
+                }
 
+                /* Caja de Hobbies (Destacada) */
+                .highlight-box {
+                    background: rgba(232, 196, 104, 0.08);
+                    border-left: 3px solid #d98850;
+                    padding: 1.2rem 1.5rem;
+                    border-radius: 0 12px 12px 0;
+                    margin: 2rem 0;
+                }
+
+                .highlight-box p {
+                    font-size: 0.92rem !important;
+                    color: #5a6b56;
+                    margin-bottom: 0 !important;
+                }
+
+                /* Bloque de cierre */
+                .closing-block {
+                    text-align: center;
+                    margin: 2rem 0;
+                    padding-top: 1rem;
+                    border-top: 1px dashed rgba(92, 138, 90, 0.2);
+                }
+
+                .closing-block p {
+                    font-family: 'Fraunces', serif;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: #2d4a2c;
+                    margin-bottom: 0.5rem !important;
+                }
+
+                .closing-block .signature {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    color: #8fb589;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                }
+
+                /* Responsive para celulares */
+                @media (max-width: 500px) {
+                    .about-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+            /* ===== TARJETA DE HOBBIES ===== */
+                .hobby-card {
+                    background: #fffaf5; /* Un tono crema muy cálido */
+                    border: 1px solid rgba(217, 136, 80, 0.2);
+                    border-left: 4px solid #d98850; /* Borde naranja */
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    margin: 2rem 0;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(217, 136, 80, 0.05);
+                }
+
+                .hobby-card:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(217, 136, 80, 0.15);
+                    background: #fff4e6;
+                }
+
+                .hobby-content {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1rem;
+                }
+
+                .hobby-icon {
+                    font-size: 2rem;
+                    line-height: 1;
+                }
+
+                .hobby-text h4 {
+                    font-family: 'Fraunces', serif;
+                    font-size: 1.1rem;
+                    color: #2d4a2c;
+                    margin-bottom: 0.3rem;
+                }
+
+                .hobby-text p {
+                    font-size: 0.85rem !important;
+                    color: #5a6b56 !important;
+                    line-height: 1.5 !important;
+                    margin-bottom: 0.8rem !important;
+                }
+
+  
 
 
 
@@ -2406,95 +2534,76 @@
     <div class="hint"><span class="hint-main">✦ Explora · cada elemento guarda una historia ✦</span><span class="hint-swipe">✦ Desliza ↔ y toca los puntos ✦</span></div>
 
     <!-- ===== OVERLAY: SOBRE MÍ ===== -->
-    <div id="overlay-principal" class="overlay">
-        <div class="overlay-content">
-            <h1>🌿 Daniel Cabrera</h1>
-            <p class="subtitle">Ciencia de Datos · Data Analyst · Desarrollador</p>
-
-            <div class="reading-content">
+        <div id="overlay-principal" class="overlay">
+            <div class="overlay-content">
                 
-                <p>
-                    <span class="highlight">¡Bienvenido a mi portafolio!</span> 
-                    Mi nombre es Daniel. Al crear este espacio, quise plasmar a la persona detrás del profesional. 
-                    Más allá de las herramientas o el nivel técnico, soy alguien igual que tú: una persona que lidera, 
-                    que está presente detrás de cada organización y que busca aportar a la sociedad.
-                </p>
+                <!-- Encabezado -->
+                <h1>🌿 Hola, soy Daniel</h1>
+                <p class="subtitle">Ciencia de Datos · Data Analyst · Desarrollador</p>
 
-                <p>
-                    Si eres cliente, reclutador o simplemente tienes curiosidad, te invito a explorar las secciones que preparé para ti:
-                </p>
+                <div class="reading-content">
+                    
+                    <!-- Introducción breve -->
+                    <p>
+                        Al crear este espacio, quise plasmar a la <span class="highlight">persona detrás del profesional</span>. 
+                        Más allá de las herramientas o el nivel técnico, soy alguien igual que tú: una persona que lidera, 
+                        que está presente detrás de cada organización y que busca aportar.
+                    </p>
 
-                <!-- Lista ordenada de secciones -->
-                <ul class="reading-list">
-                    <li>
-                        <div>
-                            <strong>Proyectos Web:</strong> Una selección donde puedes revisar el producto final. 
-                            Como en toda inversión, aquí puedes mirar, cotizar y evaluar.
+                    <!-- Tarjetas de navegación (Reemplaza la lista larga) -->
+                    <h2 class="section-title">Mi perfil</h2>
+                    
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <div class="about-icon">📖</div>
+                            <h4>Proyectos Web</h4>
+                            <p> Como en toda inversión, aquí puedes mirar, cotizar y evaluar. Revisa el producto final de mis desarrollos.</p>
                         </div>
-                    </li>
-                    <li>
-                        <div>
-                            <strong>Data Analytics:</strong> Mi aventura en la ciencia de datos, desde el preprocesamiento 
-                            y visualización, hasta la creación de modelos.
+                        <div class="about-card">
+                            <div class="about-icon">📊</div>
+                            <h4>Data Analytics</h4>
+                            <p>Mi aventura en la ciencia de datos, desde el preprocesamiento 
+                        y visualización, hasta la creación de modelos.</p>
                         </div>
-                    </li>
-                    <li>
-                        <div>
-                            <strong>Formación Académica:</strong> Mi especialización, cursos y títulos que validan mi preparación técnica.
+                        <div class="about-card">
+                            <div class="about-icon">🎓</div>
+                            <h4>Formación</h4>
+                            <p>Mi especialización, cursos y títulos que validan mi preparación técnica.</p>
                         </div>
-                    </li>
-                    <li>
-                        <div>
-                            <strong>Experiencia Laboral:</strong> Mi trayectoria, puestos y tareas en profundidad.
+                        <div class="about-card">
+                            <div class="about-icon">🪪</div>
+                            <h4>Experiencia</h4>
+                            <p> Mi trayectoria, puestos y tareas en profundidad.</p>
                         </div>
-                    </li>
-                </ul>
-
-                <p>
-                    Creo firmemente que el ser humano necesita <span class="highlight">desconexión para conectar</span>. 
-                    En la sección de <strong>Hobbies</strong> podrás ver lo que me permite rendir al máximo, alejando el estrés. 
-                    ¿Quién sabe? Quizás compartimos más de alguno.
-                </p>
-
-                <p style="font-weight: 500; color: #2d4a2c; margin-top: 2rem;">
-                    Este soy yo, Daniel Cabrera. Una persona, igual que tú.
-                </p>
-                <p class="subtitle" style="border-bottom: none; padding-bottom: 0; margin-bottom: 1rem;">
-                    Cercanía · Profesionalismo · Seriedad
-                </p>
-
-                <!-- Tarjetas de resumen -->
-                <div class="reading-grid">
-                    <div class="reading-card">
-                        <div class="number">01</div>
-                        <h4>Data & BI</h4>
-                        <p>SQL · Pandas · Visualización</p>
                     </div>
-                    <div class="reading-card">
-                        <div class="number">02</div>
-                        <h4>Desarrollo Web</h4>
-                        <p>Python · Django · JavaScript</p>
+
+                    <!-- Mis Hobbies-->
+                    <div class="hobby-card" >
+                        <div class="hobby-content">
+                            <div class="hobby-icon">🍃</div>
+                            <div class="hobby-text">
+                                <h4>Bajar el ritmo para subir el nivel</h4>
+                                    <p>
+                                        Creo firmemente que la mente necesita <strong>desconectar para conectar</strong>. 
+                                          Darle espacio a mis pasiones fuera del código es lo que me permite rendir al máximo. 
+                                        Te invito a conocer mi lado más humano: <strong>¿Quién sabe? Quizás descubras que compartimos más de algún hobbie.</strong>
+                                    </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="reading-card">
-                        <div class="number">03</div>
-                        <h4>Formación</h4>
-                        <p>Ing. Informática en curso</p>
-                    </div>
+
+                    <!-- Cierre -->
+                    <div class="closing-block">
+                        <p>Este soy yo, Daniel Cabrera. Una persona, igual que tú.</p>
+                        <p class="signature">Cercanía · Profesionalismo · Seriedad</p>
+                    </div>      
+
+                    
                 </div>
 
-                <!-- Tags finales -->
-                <p>
-                    <span class="tag">Python</span>
-                    <span class="tag">Django</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Data</span>
-                </p>
-                
+                <button class="back-btn" data-back>Volver al inicio</button>
             </div>
-            <button class="back-btn" data-back>Volver al inicio</button>
         </div>
-    </div>
 
     <!-- ===== OVERLAY: HOBBIES ===== -->
     <div id="overlay-hobbies" class="overlay">
