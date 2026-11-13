@@ -2476,6 +2476,46 @@
                     letter-spacing: 0.5px;
                 }
 
+
+                /* ===== NUEVO DISEÑO DE PROYECTOS ===== */
+                .project-card-featured {
+                    position: relative;
+                    background: #ffffff;
+                    border: 1px solid rgba(92, 138, 90, 0.1);
+                    padding: 1.5rem 1rem;
+                    transition: all 0.3s ease;
+                }
+
+                .project-card-featured:hover {
+                    border-color: #5c8a5a;
+                    transform: translateY(-4px);
+                    box-shadow: 0 8px 25px rgba(92, 138, 90, 0.12);
+                }
+
+                .project-icon {
+                    font-size: 2rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .project-tech {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    color: #d98850;
+                    background: rgba(217, 136, 80, 0.1);
+                    display: inline-block;
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                    margin-top: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                /* Opcional: Hacer que la primera tarjeta brille un poco más */
+                .project-card-featured:first-child {
+                    border-left: 3px solid #5c8a5a;
+                }
+
   
 
 
@@ -2549,7 +2589,7 @@
             <div class="overlay-content">
                 
                 <!-- Encabezado -->
-                <h1>🌿 Hola, soy Daniel</h1>
+                <h1> 📊 🌐 Hola, soy Daniel 👨‍💻</h1>
                 <p class="subtitle">Ciencia de Datos · Data Analyst · Desarrollador</p>
 
                 <div class="reading-content">
@@ -2567,7 +2607,7 @@
                     
                     <div class="about-grid">
                         <div class="about-card">
-                            <div class="about-icon">📖</div>
+                            <div class="about-icon">🌐</div>
                             <h4>Proyectos Web</h4>
                             <p> Como en toda inversión, aquí puedes mirar, cotizar y evaluar. Revisa el producto final de mis desarrollos.</p>
                         </div>
@@ -2664,63 +2704,60 @@
     <!-- ===== OVERLAY: PROYECTOS ===== -->
     <div id="overlay-proyectos" class="overlay">
         <div class="overlay-content">
-            <h1>📖 Proyectos</h1>
-            <p class="subtitle">Desarrollo web</p>
+            <h1>Proyectos Web 🌐</h1>
+            <p class="subtitle">Desarrollo · Código · Soluciones</p>
+            
             <div class="reading-content">
                 <p>
-                    Una selección de los <span class="highlight">proyectos</span> en los que he trabajado,
-                    para desarrollo web.
+                    Aquí es donde la teoría se convierte en realidad. Una selección de los 
+                    <span class="highlight">sistemas y aplicaciones web</span> que he construido, 
+                    enfocándome siempre en resolver problemas reales con código limpio y buenas prácticas.
                 </p>
+
                 <div class="reading-grid">
-                    <div class="reading-card">
-                        <div class="number">01</div>
+                    <!-- Tarjeta 1: Roseguridad -->
+                    <div class="reading-card project-card-featured">
+                        <div class="project-icon">🛡️</div>
                         <h4>Roseguridad</h4>
-                        <p>Redes y seguridad · Django</p>
-                        <span class="project-link disabled">⏳ Próximamente</span>
+                        <p>Sistema de gestión y redes de seguridad.</p>
+                        <div class="project-tech">Django · Python</div>
+                        <span class="project-link disabled" style="margin-top: 1rem;">⏳ Próximamente</span>
                     </div>
 
-                    <div class="reading-card">
-                        <div class="number">02</div>
+                    <!-- Tarjeta 2 -->
+                    <div class="reading-card project-card-featured">
+                        <div class="project-icon">💻</div>
                         <h4>Proyecto 02</h4>
-                        <p>Próximamente</p>
-                        <span class="project-link disabled">⏳ Próximamente</span>
+                        <p>Desarrollo Full-Stack en progreso.</p>
+                        <div class="project-tech">En construcción</div>
+                        <span class="project-link disabled" style="margin-top: 1rem;">⏳ Próximamente</span>
                     </div>
 
-                    <div class="reading-card">
-                        <div class="number">03</div>
+                    <!-- Tarjeta 3 -->
+                    <div class="reading-card project-card-featured">
+                        <div class="project-icon">⚙️</div>
                         <h4>Proyecto 03</h4>
-                        <p>Próximamente</p>
-                        <span class="project-link disabled">⏳ Próximamente</span>
+                        <p>Automatización y soluciones backend.</p>
+                        <div class="project-tech">En construcción</div>
+                        <span class="project-link disabled" style="margin-top: 1rem;">⏳ Próximamente</span>
                     </div>
-                
-
-                    
-                    <!-- <div class="reading-card">
-                        <div class="number">02</div>
-                        <h4>Dashboard AI</h4>
-                        <p>Visualización de datos · Python</p>
-                    </div>
-                    <div class="reading-card">
-                        <div class="number">03</div>
-                        <h4>App Nómada</h4>
-                        <p>UX/UI para viajeros</p>
-                    </div>
-                    <div class="reading-card">
-                        <div class="number">04</div>
-                        <h4>Análisis SQL</h4>
-                        <p>Reportes y KPIs de negocio</p>
-                    </div> -->
                 </div>
-                <p>
-                    <span class="highlight">Stack &amp; Tools</span>:
-                    Python · Django · SQL · JavaScript · HTML/CSS · Git
-                </p>
-                <p>
-                    <span class="tag">Full-Stack</span>
-                    <span class="tag">Data</span>
-                    <span class="tag">UI/UX</span>
-                    <span class="tag">Python</span>
-                </p>
+
+                <!-- Un bloque de cierre que resalte lo que sí haces -->
+                <div style="text-align: center; margin: 2rem 0 1rem 0;">
+                    <p style="font-size: 0.9rem; color: #8fb589;">
+                        Aunque los repositorios aún no son públicos, mi stack actual para desarrollo incluye:
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag" style="background: rgba(92,138,90,0.1); color: #2d4a2c; border-color: rgba(92,138,90,0.3);">Python</span>
+                        <span class="tag" style="background: rgba(92,138,90,0.1); color: #2d4a2c; border-color: rgba(92,138,90,0.3);">Django</span>
+                        <span class="tag" style="background: rgba(92,138,90,0.1); color: #2d4a2c; border-color: rgba(92,138,90,0.3);">SQL</span>
+                        <span class="tag" style="background: rgba(92,138,90,0.1); color: #2d4a2c; border-color: rgba(92,138,90,0.3);">JavaScript</span>
+                        <span class="tag" style="background: rgba(92,138,90,0.1); color: #2d4a2c; border-color: rgba(92,138,90,0.3);">HTML/CSS</span>
+                        <span class="tag" style="background: rgba(92,138,90,0.1); color: #2d4a2c; border-color: rgba(92,138,90,0.3);">Git</span>
+                    </div>
+                </div>
+
             </div>
             <button class="back-btn" data-back>Volver al inicio</button>
         </div>
@@ -2730,8 +2767,8 @@
     <!-- ===== OVERLAY: FORMACIÓN ACADÉMICA ===== -->
         <div id="overlay-formacion" class="overlay">
             <div class="overlay-content">
-                <h1>🎯 Formación Académica</h1>
-                <p class="subtitle">Aprendizaje continuo · Mejora diaria</p>
+                <h1>Formación Académica 🏫</h1>
+                <p class="subtitle">Educación formal · Certificaciones</p>
 
                 <div class="reading-content">
 
@@ -2840,7 +2877,7 @@
         <!-- ===== OVERLAY: EXPERIENCIA LABORAL (gafete) ===== -->
         <div id="overlay-experiencia" class="overlay">
             <div class="overlay-content">
-                <h1>🪪 Experiencia laboral</h1>
+                <h1>Experiencia laboral 💼</h1>
                 <p class="subtitle">Más de 15 años de trayectoria · de RR. HH. a ciencia de datos</p>
 
                 <div class="reading-content">
@@ -3021,7 +3058,7 @@
         <!-- ===== OVERLAY: DATA ANALYTICS ===== -->
             <div id="overlay-data" class="overlay">
                 <div class="overlay-content">
-                    <h1>📊 Data Analytics</h1>
+                    <h1>Data Analytics 📊</h1>
                     <p class="subtitle">Ciencia de Datos · Machine Learning</p>
 
                     <div class="reading-content">
